@@ -1,0 +1,664 @@
+/* ===== AGENDAMENTO SECTION - COM MESMO FUNDO DOS SERVIÇOS ===== */
+.agendamento {
+    padding: 100px 0;
+    background: linear-gradient(135deg, 
+        rgba(248, 249, 250, 0.9) 0%,
+        rgba(240, 241, 255, 0.9) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Elementos decorativos de fundo - igual ao dos serviços */
+.agendamento::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, 
+        rgba(255, 107, 53, 0.1) 0%, 
+        rgba(0, 180, 216, 0.1) 100%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.agendamento::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: -100px;
+    width: 250px;
+    height: 250px;
+    background: linear-gradient(135deg, 
+        rgba(255, 209, 102, 0.1) 0%, 
+        rgba(6, 214, 160, 0.1) 100%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.agendamento .container {
+    position: relative;
+    z-index: 1;
+}
+
+.agendamento-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+/* Lado esquerdo - Informações */
+.agendamento-text {
+    padding-right: 2rem;
+}
+
+.agendamento-text h2 {
+    font-size: 2.5rem;
+    color: var(--orange);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.agendamento-text > p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--dark-gray);
+    margin-bottom: 2rem;
+}
+
+/* ===== VANTAGENS REAIS ===== */
+.vantagens-reais {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.vantagem-real {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 107, 53, 0.15);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.vantagem-real:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    background: white;
+    border-color: rgba(255, 107, 53, 0.25);
+}
+
+.vantagem-icone {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--orange) 0%, var(--orange-light) 100%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.vantagem-texto h4 {
+    color: var(--orange-dark);
+    margin-bottom: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.vantagem-texto p {
+    color: var(--dark-gray);
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* ===== CONTATO WHATSAPP ===== */
+.contato-whatsapp {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border: 1px solid rgba(37, 211, 102, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(5px);
+}
+
+.whatsapp-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.whatsapp-header i {
+    color: #25D366;
+    font-size: 1.8rem;
+    background: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
+    border: 1px solid rgba(37, 211, 102, 0.2);
+}
+
+.whatsapp-header h4 {
+    color: #25D366;
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.contato-whatsapp > p {
+    color: var(--dark-gray);
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.5;
+}
+
+.btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #25D366;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
+}
+
+.btn-whatsapp:hover {
+    background: #128C7E;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+}
+
+/* ===== CONTATO EMERGÊNCIA ===== */
+.contato-rapido {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 107, 53, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    backdrop-filter: blur(5px);
+}
+
+.contato-rapido h4 {
+    color: var(--orange-dark);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* ===== FORMULÁRIO - DESIGN MODERNO E LIMPO ===== */
+.agendamento-form {
+    position: relative;
+}
+
+.form-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 107, 53, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.form-container h3 {
+    color: var(--orange);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+/* Campos do formulário */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--orange-dark);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    color: var(--black);
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: all 0.2s ease;
+}
+
+.form-group select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236c757d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1rem;
+    padding-right: 2.5rem;
+    cursor: pointer;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--orange);
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+    background-color: white;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+    line-height: 1.5;
+}
+
+/* Linha com dois campos */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* Botão de envio */
+.form-container .btn-primary {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    border-radius: 8px;
+    background-color: var(--orange);
+    border: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.2);
+}
+
+.form-container .btn-primary:hover {
+    background-color: var(--orange-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+}
+
+/* Nota do formulário */
+.form-nota {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    font-size: 0.85rem;
+    color: var(--dark-gray);
+    text-align: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    line-height: 1.5;
+}
+
+/* Estados de validação */
+.form-group input:invalid:not(:focus):not(:placeholder-shown),
+.form-group select:invalid:not(:focus),
+.form-group textarea:invalid:not(:focus):not(:placeholder-shown) {
+    border-color: #dc3545;
+    background-color: rgba(220, 53, 69, 0.05);
+}
+
+.form-group input:valid:not(:placeholder-shown),
+.form-group select:valid,
+.form-group textarea:valid:not(:placeholder-shown) {
+    border-color: #28a745;
+    background-color: rgba(40, 167, 69, 0.05);
+}
+
+/* ===== RESPONSIVIDADE ===== */
+
+/* Tablet */
+@media (max-width: 991px) {
+    .agendamento {
+        padding: 80px 0;
+    }
+    
+    .agendamento-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .agendamento-text {
+        padding-right: 0;
+    }
+    
+    .agendamento-text h2 {
+        font-size: 2.2rem;
+    }
+    
+    .vantagens-reais {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+    
+    .vantagem-real {
+        padding: 0.8rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    .agendamento {
+        padding: 60px 0;
+    }
+    
+    .agendamento-text h2 {
+        font-size: 2rem;
+    }
+    
+    .form-container {
+        padding: 2rem;
+    }
+    
+    .form-container h3 {
+        font-size: 1.4rem;
+    }
+    
+    .whatsapp-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+    }
+    
+    .whatsapp-header i {
+        width: 45px;
+        height: 45px;
+        font-size: 1.5rem;
+    }
+    
+    .whatsapp-header h4 {
+        font-size: 1.1rem;
+    }
+    
+    .vantagem-texto h4 {
+        font-size: 0.95rem;
+    }
+    
+    .vantagem-texto p {
+        font-size: 0.8rem;
+    }
+}
+
+/* Mobile pequeno */
+@media (max-width: 575px) {
+    .agendamento {
+        padding: 50px 0;
+    }
+    
+    .agendamento-text h2 {
+        font-size: 1.8rem;
+    }
+    
+    .form-container {
+        padding: 1.5rem;
+    }
+    
+    .contato-whatsapp,
+    .contato-rapido {
+        padding: 1.2rem;
+    }
+    
+    .btn-whatsapp {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+    
+    .vantagem-real {
+        font-size: 0.95rem;
+    }
+    
+    /* Esconder elementos decorativos em mobile pequeno */
+    .agendamento::before,
+    .agendamento::after {
+        display: none;
+    }
+}
+
+/* ===== ANIMAÇÕES ===== */
+.agendamento-content {
+    animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.vantagem-real {
+    animation: fadeInUp 0.5s ease-out;
+    animation-fill-mode: both;
+}
+
+.vantagem-real:nth-child(1) { animation-delay: 0.1s; }
+.vantagem-real:nth-child(2) { animation-delay: 0.2s; }
+.vantagem-real:nth-child(3) { animation-delay: 0.3s; }
+.vantagem-real:nth-child(4) { animation-delay: 0.4s; }
+
+.contato-whatsapp {
+    animation: fadeInUp 0.6s ease-out 0.5s both;
+}
+
+.contato-rapido {
+    animation: fadeInUp 0.6s ease-out 0.6s both;
+}
+
+/* ===== EFEITOS DE HOVER ===== */
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+    border-color: #adb5bd;
+    background-color: white;
+}
+
+/* Placeholder */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #adb5bd;
+}
+
+/* Foco nos labels */
+.form-group:focus-within label {
+    color: var(--orange);
+}
+
+/* Estilo para opções do select */
+.form-group select option {
+    padding: 0.5rem;
+}
+
+/* Efeito de brilho nos links */
+.contato-rapido a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 180, 216, 0.3);
+}
+
+/* Indicador visual para campos obrigatórios (sem asterisco) */
+.form-group label:after {
+    content: '';
+    color: transparent;
+}
+
+/* ===== BOTÕES SECUNDÁRIOS E TERCIÁRIOS ===== */
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+    background-color: var(--blue);
+    color: var(--white);
+    box-shadow: 0 4px 12px rgba(0, 180, 216, 0.2);
+}
+
+.btn-secondary:hover {
+    background-color: var(--blue-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 180, 216, 0.3);
+}
+
+.btn-large {
+    padding: 16px 32px;
+    font-size: 1.1rem;
+}
+
+.btn-small {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+}
+
+.btn-block {
+    width: 100%;
+    display: block;
+}
+
+/* Ajuste específico para botão do contato rápido */
+.contato-rapido .btn-secondary {
+    width: 100%;
+}
+
+/* ===== TIPOGRAFIA ESPECÍFICA ===== */
+.agendamento-text h2.section-title {
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.agendamento-text h2.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--orange), var(--yellow));
+    border-radius: 2px;
+}
+
+/* Ajuste para telas maiores */
+@media (min-width: 1200px) {
+    .agendamento-content {
+        gap: 80px;
+    }
+    
+    .agendamento-text {
+        padding-right: 40px;
+    }
+    
+    .form-container {
+        padding: 3rem;
+    }
+}
+
+/* Ajuste para telas muito grandes */
+@media (min-width: 1400px) {
+    .agendamento {
+        padding: 120px 0;
+    }
+}
+
+/* Preferência por movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+    .agendamento-content,
+    .vantagem-real,
+    .contato-whatsapp,
+    .contato-rapido {
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    .vantagem-real:hover,
+    .btn-whatsapp:hover,
+    .btn-secondary:hover,
+    .form-container .btn-primary:hover {
+        transform: none !important;
+    }
+}
+
+/* Acessibilidade - foco visível */
+.btn-whatsapp:focus,
+.btn-secondary:focus,
+.btn-primary:focus,
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: 2px solid var(--orange);
+    outline-offset: 2px;
+}
+
+/* Animações de entrada suaves para o formulário */
+.form-container {
+    animation: slideIn 0.8s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

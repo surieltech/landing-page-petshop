@@ -1,0 +1,118 @@
+/* ===== PRODUTOS SECTION ===== */
+.produtos {
+    padding: 4rem 0;
+    background-color: var(--light-gray);
+}
+
+.produtos-categorias {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.categoria-btn {
+    padding: 10px 20px;
+    background-color: var(--white);
+    border: 2px solid var(--medium-gray);
+    border-radius: 50px;
+    color: var(--dark-gray);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.categoria-btn.active,
+.categoria-btn:hover {
+    background-color: var(--orange);
+    color: var(--white);
+    border-color: var(--orange);
+}
+
+.produtos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.produto-card {
+    background-color: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.produto-card:hover {
+    transform: translateY(-5px);
+}
+
+.produto-imagem {
+    height: 200px;
+    overflow: hidden;
+}
+
+.produto-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.produto-card:hover .produto-imagem img {
+    transform: scale(1.05);
+}
+
+.produto-info {
+    padding: 1.5rem;
+}
+
+.produto-info h3 {
+    color: var(--orange);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.produto-preco {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.preco-atual {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--orange);
+}
+
+.preco-antigo {
+    font-size: 1rem;
+    color: var(--dark-gray);
+    text-decoration: line-through;
+}
+
+.produtos-entrega {
+    background-color: var(--blue);
+    border-radius: 15px;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    color: var(--white);
+}
+
+.entrega-info {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.entrega-info i {
+    font-size: 2.5rem;
+    opacity: 0.9;
+}

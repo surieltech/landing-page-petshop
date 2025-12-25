@@ -64,7 +64,7 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="#" alt="Veterinária cuidando de cachorro" class="hero-img">
+                <img src="src/img/veterinaria-cuidando-de-cachorro.avif" alt="Veterinária cuidando de cachorro" class="hero-img">
             </div>
         </div>
     </section>
@@ -74,43 +74,72 @@
         <div class="container">
             <div class="sobre-content">
                 <div class="sobre-image">
-                    <img src="#" alt="Equipe da Clínica Bicho Legal">
+                    <img src="src/img/sobre-a-clinica.webp" 
+                        alt="Equipe da Clínica Bicho Legal cuidando de pets">
                 </div>
+                
                 <div class="sobre-text">
-                    <h2 class="section-title">Sobre a Clínica Bicho Legal</h2>
+                    <h2>Sobre a Clínica Bicho Legal</h2>
                     <p>Há mais de 15 anos, a Clínica Bicho Legal se dedica a oferecer cuidados veterinários de excelência para cães, gatos e animais exóticos. Nossa missão é promover a saúde e o bem-estar dos pets com muito amor, tecnologia e conhecimento científico.</p>
                     
                     <div class="sobre-diferenciais">
                         <div class="diferencial">
-                            <i class="fas fa-award"></i>
-                            <div>
+                            <div class="diferencial-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div class="diferencial-text">
                                 <h4>Experiência Comprovada</h4>
                                 <p>15 anos de atuação com mais de 10.000 pets atendidos</p>
                             </div>
                         </div>
                         
                         <div class="diferencial">
-                            <i class="fas fa-flask"></i>
-                            <div>
-                                <h4>Tecnologia de Ponta</h4>
+                            <div class="diferencial-icon">
+                                <i class="fas fa-stethoscope"></i>
+                            </div>
+                            <div class="diferencial-text">
+                                <h4>Tecnologia Avançada</h4>
                                 <p>Equipamentos modernos para diagnósticos precisos</p>
                             </div>
                         </div>
                         
                         <div class="diferencial">
-                            <i class="fas fa-heart"></i>
-                            <div>
+                            <div class="diferencial-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="diferencial-text">
                                 <h4>Atendimento Humanizado</h4>
-                                <p>Cada pet é tratado como um membro da nossa família</p>
+                                <p>Cada pet é tratado com carinho e atenção especial</p>
                             </div>
                         </div>
                         
                         <div class="diferencial">
-                            <i class="fas fa-users"></i>
-                            <div>
+                            <div class="diferencial-icon">
+                                <i class="fas fa-user-md"></i>
+                            </div>
+                            <div class="diferencial-text">
                                 <h4>Equipe Especializada</h4>
                                 <p>Veterinários com especialização em diversas áreas</p>
                             </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sobre-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">15+</span>
+                            <span class="stat-label">Anos de Experiência</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">10k+</span>
+                            <span class="stat-label">Pets Atendidos</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">24h</span>
+                            <span class="stat-label">Atendimento</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Dedicação</span>
                         </div>
                     </div>
                 </div>
@@ -208,7 +237,7 @@
         </div>
     </section>
 
-    <!-- Vacines Section -->
+    <!-- Vaccines Section -->
     <section id="vacinas" class="vacinas">
         <div class="container">
             <div class="section-header">
@@ -273,35 +302,37 @@
         </div>
     </section>
 
-    <!-- Produts Section -->
+    <!-- Products Section -->
     <section id="produtos" class="produtos">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Produtos e Farmácia</h2>
-                <p class="section-subtitle>Tudo que seu pet precisa em um só lugar</p>
+                <p class="section-subtitle">Tudo que seu pet precisa em um só lugar</p>
             </div>
             
             <div class="produtos-categorias">
+                <button class="categoria-btn" data-categoria="todos">Todos</button>
                 <button class="categoria-btn active" data-categoria="racao">Rações</button>
                 <button class="categoria-btn" data-categoria="medicamentos">Medicamentos</button>
                 <button class="categoria-btn" data-categoria="higiene">Higiene</button>
                 <button class="categoria-btn" data-categoria="brinquedos">Brinquedos</button>
+                <button class="categoria-btn" data-categoria="acessorios">Acessórios</button>
             </div>
             
+            <!-- Rações -->
             <div class="produtos-grid">
-                <!-- Rações -->
                 <div class="produto-card active" data-categoria="racao">
                     <div class="produto-imagem">
-                        <img src="#" alt="Ração Premium">
+                        <img src="src/img/racao-cachorro.webp" alt="Ração Premium para Cães">
                     </div>
                     <div class="produto-info">
                         <h3>Ração Premium para Cães Adultos</h3>
-                        <p>Ração completa e balanceada para cães adultos de todas as raças</p>
+                        <p>Ração completa e balanceada para cães adultos de todas as raças. Rico em proteínas e vitaminas.</p>
                         <div class="produto-preco">
                             <span class="preco-atual">R$ 149,90</span>
                             <span class="preco-antigo">R$ 179,90</span>
                         </div>
-                        <button class="btn btn-secondary btn-small">
+                        <button class="btn btn-secondary btn-small btn-comprar">
                             <i class="fas fa-shopping-cart"></i> Comprar
                         </button>
                     </div>
@@ -309,15 +340,33 @@
                 
                 <div class="produto-card active" data-categoria="racao">
                     <div class="produto-imagem">
-                        <img src="#" alt="Ração para Gatos">
+                        <img src="src/img/WHISKAS-ADULTO-CASTRADOS-CARNE-900g (2).avif" alt="Ração para Gatos">
                     </div>
                     <div class="produto-info">
                         <h3>Ração para Gatos Castrados</h3>
-                        <p>Fórmula especial para controle de peso e saúde urinária</p>
+                        <p>Fórmula especial para controle de peso e saúde urinária. Sabor frango e salmão.</p>
                         <div class="produto-preco">
                             <span class="preco-atual">R$ 129,90</span>
+                            <span class="preco-antigo">R$ 149,90</span>
                         </div>
-                        <button class="btn btn-secondary btn-small">
+                        <button class="btn btn-secondary btn-small btn-comprar">
+                            <i class="fas fa-shopping-cart"></i> Comprar
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="produto-card active" data-categoria="racao">
+                    <div class="produto-imagem">
+                        <img src="src/img/racao-filhotes-cachorro.jpg" alt="Ração para Filhotes">
+                    </div>
+                    <div class="produto-info">
+                        <h3>Ração para Filhotes</h3>
+                        <p>Nutrição especializada para filhotes até 12 meses. Desenvolvimento saudável.</p>
+                        <div class="produto-preco">
+                            <span class="preco-atual">R$ 99,90</span>
+                            <span class="preco-antigo">R$ 119,90</span>
+                        </div>
+                        <button class="btn btn-secondary btn-small btn-comprar">
                             <i class="fas fa-shopping-cart"></i> Comprar
                         </button>
                     </div>
@@ -326,15 +375,16 @@
                 <!-- Medicamentos -->
                 <div class="produto-card" data-categoria="medicamentos">
                     <div class="produto-imagem">
-                        <img src="#" alt="Vermífugo">
+                        <img src="src/img/vermifugo.webp" alt="Vermífugo">
                     </div>
                     <div class="produto-info">
                         <h3>Vermífugo para Cães e Gatos</h3>
-                        <p>Elimina vermes intestinais. Dose única</p>
+                        <p>Elimina vermes intestinais. Dose única. Proteção por 3 meses.</p>
                         <div class="produto-preco">
                             <span class="preco-atual">R$ 34,90</span>
+                            <span class="preco-antigo">R$ 39,90</span>
                         </div>
-                        <button class="btn btn-secondary btn-small">
+                        <button class="btn btn-secondary btn-small btn-comprar">
                             <i class="fas fa-shopping-cart"></i> Comprar
                         </button>
                     </div>
@@ -342,15 +392,33 @@
                 
                 <div class="produto-card" data-categoria="medicamentos">
                     <div class="produto-imagem">
-                        <img src="#" alt="Antipulgas">
+                        <img src="src/img/Antipulgas-e-Carrapatos-Nexgard-Caes-25-1-a-50kg.webp" alt="Antipulgas">
                     </div>
                     <div class="produto-info">
                         <h3>Antipulgas e Carrapatos</h3>
-                        <p>Proteção mensal contra parasitas externos</p>
+                        <p>Proteção mensal contra parasitas externos. Pipeta aplicação tópica.</p>
                         <div class="produto-preco">
                             <span class="preco-atual">R$ 59,90</span>
+                            <span class="preco-antigo">R$ 69,90</span>
                         </div>
-                        <button class="btn btn-secondary btn-small">
+                        <button class="btn btn-secondary btn-small btn-comprar">
+                            <i class="fas fa-shopping-cart"></i> Comprar
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="produto-card" data-categoria="medicamentos">
+                    <div class="produto-imagem">
+                        <img src="src/img/suplemento-articular.jpg" alt="Suplemento Articular">
+                    </div>
+                    <div class="produto-info">
+                        <h3>Suplemento Articular</h3>
+                        <p>Condroitina e glucosamina para saúde das articulações. Cães idosos.</p>
+                        <div class="produto-preco">
+                            <span class="preco-atual">R$ 89,90</span>
+                            <span class="preco-antigo">R$ 99,90</span>
+                        </div>
+                        <button class="btn btn-secondary btn-small btn-comprar">
                             <i class="fas fa-shopping-cart"></i> Comprar
                         </button>
                     </div>
@@ -359,15 +427,49 @@
                 <!-- Higiene -->
                 <div class="produto-card" data-categoria="higiene">
                     <div class="produto-imagem">
-                        <img src="#" alt="Shampoo para Pets">
+                        <img src="src/img/shampoo-hipoalergenico.webp" alt="Shampoo para Pets">
                     </div>
                     <div class="produto-info">
                         <h3>Shampoo Hipoalergênico</h3>
-                        <p>Limpeza suave para pets com pele sensível</p>
+                        <p>Limpeza suave para pets com pele sensível. pH balanceado.</p>
                         <div class="produto-preco">
                             <span class="preco-atual">R$ 42,90</span>
+                            <span class="preco-antigo">R$ 49,90</span>
                         </div>
-                        <button class="btn btn-secondary btn-small">
+                        <button class="btn btn-secondary btn-small btn-comprar">
+                            <i class="fas fa-shopping-cart"></i> Comprar
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="produto-card" data-categoria="higiene">
+                    <div class="produto-imagem">
+                        <img src="src/img/escova.webp" alt="Escova para Pets">
+                    </div>
+                    <div class="produto-info">
+                        <h3>Escova Profissional</h3>
+                        <p>Remove pelos mortos e desembaraça. Para cães e gatos de pelo longo.</p>
+                        <div class="produto-preco">
+                            <span class="preco-atual">R$ 37,90</span>
+                            <span class="preco-antigo">R$ 44,90</span>
+                        </div>
+                        <button class="btn btn-secondary btn-small btn-comprar">
+                            <i class="fas fa-shopping-cart"></i> Comprar
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="produto-card" data-categoria="higiene">
+                    <div class="produto-imagem">
+                        <img src="src/img/cortador-de-unhas.webp" alt="Cortador de Unhas">
+                    </div>
+                    <div class="produto-info">
+                        <h3>Cortador de Unhas Profissional</h3>
+                        <p>Corte preciso e seguro. Com limitador e afiação especial.</p>
+                        <div class="produto-preco">
+                            <span class="preco-atual">R$ 54,90</span>
+                        </div>
+                        <button class="btn btn-secondary btn-small btn-comprar">
                             <i class="fas fa-shopping-cart"></i> Comprar
                         </button>
                     </div>
@@ -376,15 +478,84 @@
                 <!-- Brinquedos -->
                 <div class="produto-card" data-categoria="brinquedos">
                     <div class="produto-imagem">
-                        <img src="#" alt="Brinquedo para Pets">
+                        <img src="src/img/bolinha.jpg" alt="Bolinha para Cães">
                     </div>
                     <div class="produto-info">
-                        <h3>Brinquedo Interativo</h3>
-                        <p>Estimula a mente e evita o tédio do pet</p>
+                        <h3>Bolinha de Borracha</h3>
+                        <p>Material resistente e atóxico. Ideal para exercícios ao ar livre.</p>
                         <div class="produto-preco">
-                            <span class="preco-atual">R$ 39,90</span>
+                            <span class="preco-atual">R$ 22,90</span>
                         </div>
-                        <button class="btn btn-secondary btn-small">
+                        <button class="btn btn-secondary btn-small btn-comprar">
+                            <i class="fas fa-shopping-cart"></i> Comprar
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="produto-card" data-categoria="brinquedos">
+                    <div class="produto-imagem">
+                        <img src="src/img/arranhador-para-gatos.jpg" alt="Arranhador para Gatos">
+                    </div>
+                    <div class="produto-info">
+                        <h3>Arranhador para Gatos</h3>
+                        <p>Preserva móveis e exercita as unhas. Com sisal e plataforma.</p>
+                        <div class="produto-preco">
+                            <span class="preco-atual">R$ 129,90</span>
+                            <span class="preco-antigo">R$ 149,90</span>
+                        </div>
+                        <button class="btn btn-secondary btn-small btn-comprar">
+                            <i class="fas fa-shopping-cart"></i> Comprar
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Acessórios -->
+                <div class="produto-card" data-categoria="acessorios">
+                    <div class="produto-imagem">
+                        <img src="src/img/coleira-ajustavel.jpg" alt="Coleira para Cães">
+                    </div>
+                    <div class="produto-info">
+                        <h3>Coleira Ajustável</h3>
+                        <p>Material resistente à água. Com fecho de segurança e identificação.</p>
+                        <div class="produto-preco">
+                            <span class="preco-atual">R$ 47,90</span>
+                            <span class="preco-antigo">R$ 59,90</span>
+                        </div>
+                        <button class="btn btn-secondary btn-small btn-comprar">
+                            <i class="fas fa-shopping-cart"></i> Comprar
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="produto-card" data-categoria="acessorios">
+                    <div class="produto-imagem">
+                        <img src="src/img/cama-ortopedica.jpg" alt="Cama para Pets">
+                    </div>
+                    <div class="produto-info">
+                        <h3>Cama Ortopédica</h3>
+                        <p>Conforto máximo para pets. Espuma viscoelástica e capa lavável.</p>
+                        <div class="produto-preco">
+                            <span class="preco-atual">R$ 199,90</span>
+                            <span class="preco-antigo">R$ 249,90</span>
+                        </div>
+                        <button class="btn btn-secondary btn-small btn-comprar">
+                            <i class="fas fa-shopping-cart"></i> Comprar
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="produto-card" data-categoria="acessorios">
+                    <div class="produto-imagem">
+                        <img src="src/img/comedouro-elevado.jpg" alt="Comedouro Elevado">
+                    </div>
+                    <div class="produto-info">
+                        <h3>Comedouro Elevado</h3>
+                        <p>Melhora a postura na alimentação. Ajustável em altura. Aço inox.</p>
+                        <div class="produto-preco">
+                            <span class="preco-atual">R$ 89,90</span>
+                            <span class="preco-antigo">R$ 109,90</span>
+                        </div>
+                        <button class="btn btn-secondary btn-small btn-comprar">
                             <i class="fas fa-shopping-cart"></i> Comprar
                         </button>
                     </div>
@@ -395,13 +566,18 @@
                 <div class="entrega-info">
                     <i class="fas fa-truck"></i>
                     <div>
-                        <h4>Entrega em Casa</h4>
-                        <p>Compre online e receba os produtos no conforto do seu lar. Entregas para toda a região.</p>
+                        <h4>Entrega Rápida em Casa</h4>
+                        <p>Compre online e receba os produtos no conforto do seu lar. Entregas para toda a região em até 24h.</p>
                     </div>
                 </div>
-                <a href="https://wa.me/5592999999999?text=Olá! Gostaria de fazer um pedido de produtos para o meu pet, por favor." class="btn btn-primary" target="_blank">
-                    <i class="fab fa-whatsapp"></i> Pedir pelo WhatsApp
-                </a>
+                <div class="entrega-opcoes">
+                    <a href="https://wa.me/5592999999999?text=Olá! Gostaria de fazer um pedido de produtos para o meu pet, por favor." class="btn btn-primary" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Pedir pelo WhatsApp
+                    </a>
+                    <a href="tel:+5592999999999" class="btn btn-secondary">
+                        <i class="fas fa-phone-alt"></i> Ligar para Pedir
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -479,7 +655,7 @@
         </div>
     </section>
 
-    <!-- Agendamento Section -->
+    <!-- Scheduling Section -->
     <section id="agendamento" class="agendamento">
         <div class="container">
             <div class="agendamento-content">
@@ -487,13 +663,64 @@
                     <h2 class="section-title">Agende sua Consulta:</h2>
                     <p>Facilidade e praticidade para cuidar da saúde do seu pet. Escolha o serviço, selecione o horário e pronto!</p>
                     
-                    <div class="vantagens">
-                        <p><i class="fas fa-check-circle"></i> Confirmação instantânea</p>
-                        <p><i class="fas fa-check-circle"></i> Lembretes automáticos</p>
-                        <p><i class="fas fa-check-circle"></i> Sem filas de espera</p>
-                        <p><i class="fas fa-check-circle"></i> Médicos especializados</p>
+                    <!-- Vantagens -->
+                    <div class="vantagens-reais">
+                        <div class="vantagem-real">
+                            <div class="vantagem-icone">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="vantagem-texto">
+                                <h4>Agendamento Online</h4>
+                                <p>Marque pelo site, WhatsApp ou telefone</p>
+                            </div>
+                        </div>
+                        
+                        <div class="vantagem-real">
+                            <div class="vantagem-icone">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="vantagem-texto">
+                                <h4>Confirmação Rápida</h4>
+                                <p>Entraremos em contato em até 2 horas úteis</p>
+                            </div>
+                        </div>
+                        
+                        <div class="vantagem-real">
+                            <div class="vantagem-icone">
+                                <i class="fas fa-user-md"></i>
+                            </div>
+                            <div class="vantagem-texto">
+                                <h4>Especialistas</h4>
+                                <p>Veterinários com especialização</p>
+                            </div>
+                        </div>
+                        
+                        <div class="vantagem-real">
+                            <div class="vantagem-icone">
+                                <i class="fas fa-history"></i>
+                            </div>
+                            <div class="vantagem-texto">
+                                <h4>Sem Filas</h4>
+                                <p>Atendimento no horário marcado</p>
+                            </div>
+                        </div>
                     </div>
                     
+                    <!--botão para contato por WhatsApp -->
+                    <div class="contato-whatsapp">
+                        <div class="whatsapp-header">
+                            <i class="fab fa-whatsapp"></i>
+                            <h4>Prefere agendar pelo WhatsApp?</h4>
+                        </div>
+                        <p>É mais rápido e prático! Clique abaixo para conversar diretamente com nossa equipe.</p>
+                        <a href="https://wa.me/5592999999999?text=Olá! Gostaria de agendar uma consulta para meu pet." 
+                        class="btn btn-whatsapp" 
+                        target="_blank">
+                            <i class="fab fa-whatsapp"></i> Agendar pelo WhatsApp
+                        </a>
+                    </div>
+                    
+                    <!--botão para ligação de emergência-->
                     <div class="contato-rapido">
                         <h4>Precisa de atendimento urgente?</h4>
                         <a href="tel:+5592999999999" class="btn btn-secondary">
@@ -502,6 +729,7 @@
                     </div>
                 </div>
                 
+                <!--formulário propriamente dito-->
                 <div class="agendamento-form">
                     <div class="form-container">
                         <h3>Agendamento Online</h3>
@@ -624,7 +852,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2024 Clínica Bicho Legal. Todos os direitos reservados.</p>
+                <p>&copy; 2025 Clínica Bicho Legal. Todos os direitos reservados.</p>
                 <p>CNPJ: 12.345.678/0001-90 | CRMV-AM: 12345</p>
             </div>
         </div>

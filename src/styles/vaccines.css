@@ -1,0 +1,199 @@
+/* ===== VACINAS SECTION ===== */
+.vacinas {
+    padding: 4rem 0;
+    background-color: var(--white);
+}
+
+.vacinas-tabela {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.vacina-tipo {
+    background-color: var(--light-gray);
+    padding: 2rem;
+    border-radius: 15px;
+}
+
+.vacina-tipo h3 {
+    color: var(--orange);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.vacina-tipo h3 i {
+    color: var(--orange);
+}
+
+.vacina-item {
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--green);
+}
+
+.vacina-item h4 {
+    color: var(--blue);
+    margin-bottom: 0.5rem;
+}
+
+.vacina-idade {
+    display: inline-block;
+    background-color: var(--yellow-light);
+    color: var(--black);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-top: 0.5rem;
+}
+
+.vacinas-importante {
+    background-color: #FFF3E0;
+    border-radius: 15px;
+    padding: 2rem;
+    border-left: 5px solid var(--orange);
+}
+
+.alerta {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.alerta i {
+    color: var(--orange);
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+/* Diferenciação visual entre cães e gatos */
+.vacina-tipo:nth-child(1) h3 {
+    color: var(--blue-dark);
+}
+
+.vacina-tipo:nth-child(1) h3 i {
+    color: var(--blue);
+    background: rgba(0, 180, 216, 0.1);
+}
+
+.vacina-tipo:nth-child(1) .vacina-item {
+    border-left-color: var(--blue-light);
+}
+
+.vacina-tipo:nth-child(2) h3 {
+    color: var(--pink);
+}
+
+.vacina-tipo:nth-child(2) h3 i {
+    color: var(--pink);
+    background: rgba(239, 71, 111, 0.1);
+}
+
+.vacina-tipo:nth-child(2) .vacina-item {
+    border-left-color: var(--pink);
+}
+
+/* ===== RESPONSIVIDADE ===== */
+
+/* Tablet */
+@media (max-width: 992px) {
+    .vacinas {
+        padding: 4rem 0;
+    }
+    
+    .vacinas-tabela {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        max-width: 600px;
+        margin: 2rem auto;
+    }
+    
+    .vacina-tipo {
+        padding: 2rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .vacinas {
+        padding: 3rem 0;
+    }
+    
+    .vacina-tipo h3 {
+        font-size: 1.3rem;
+    }
+    
+    .vacina-tipo h3 i {
+        width: 45px;
+        height: 45px;
+        font-size: 1.5rem;
+    }
+    
+    .vacina-item {
+        padding: 1.5rem;
+    }
+    
+    .alerta {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .alerta i {
+        margin: 0 auto;
+    }
+    
+    .vacinas-importante {
+        padding: 2rem;
+    }
+}
+
+/* Mobile pequeno */
+@media (max-width: 480px) {
+    .vacinas {
+        padding: 2.5rem 0;
+    }
+    
+    .vacina-tipo {
+        padding: 1.5rem;
+    }
+    
+    .vacina-item {
+        padding: 1.2rem;
+    }
+    
+    .vacina-item h4 {
+        font-size: 1.1rem;
+    }
+    
+    .vacinas-importante {
+        padding: 1.5rem;
+    }
+}
+
+/* Animações de entrada */
+.vacina-tipo {
+    animation: fadeInUp 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+.vacina-tipo:nth-child(1) { animation-delay: 0.1s; }
+.vacina-tipo:nth-child(2) { animation-delay: 0.2s; }
+.vacinas-importante { animation-delay: 0.3s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

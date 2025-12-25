@@ -1,0 +1,418 @@
+/* ===== HEADER E NAVEGAÇÃO MODERNIZADA ===== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-bottom: 1px solid rgba(255, 107, 53, 0.1);
+}
+
+.header.scrolled {
+    padding: 0.3rem 0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0;
+    position: relative;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--orange);
+    text-decoration: none;
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 1001;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.logo-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo i {
+    color: var(--orange);
+    font-size: 2.2rem;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.5s ease;
+}
+
+.logo:hover i {
+    transform: rotate(15deg);
+}
+
+.logo-icon::before {
+    content: '';
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(255, 107, 53, 0.2) 100%);
+    border-radius: 50%;
+    z-index: 0;
+    animation: pulse 2s infinite;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu a {
+    color: var(--dark);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05rem;
+    padding: 0.8rem 0;
+    position: relative;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-menu a i {
+    font-size: 1.1rem;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.nav-menu a:hover i {
+    opacity: 1;
+    color: var(--orange);
+}
+
+.nav-menu a:hover {
+    color: var(--orange);
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--orange), var(--orange-light));
+    border-radius: 3px;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+.nav-menu a.active {
+    color: var(--orange);
+    font-weight: 700;
+}
+
+.nav-menu a.active::after {
+    width: 100%;
+}
+
+/* Botão Agendar no menu */
+.nav-menu .btn-agendar {
+    background: linear-gradient(135deg, var(--orange) 0%, var(--orange-light) 100%);
+    color: white;
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-menu .btn-agendar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+}
+
+.nav-menu .btn-agendar::after {
+    display: none;
+}
+
+/* Botão Menu Mobile */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(255, 107, 53, 0.2) 100%);
+    color: var(--orange);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1001;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-toggle:hover {
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.2) 0%, rgba(255, 107, 53, 0.3) 100%);
+    transform: scale(1.1);
+}
+
+.menu-toggle:active {
+    transform: scale(0.95);
+}
+
+.menu-toggle .close-icon {
+    display: none;
+}
+
+.menu-toggle.active .menu-icon {
+    display: none;
+}
+
+.menu-toggle.active .close-icon {
+    display: block;
+}
+
+/* Badge para o botão agendar */
+.btn-badge {
+    position: relative;
+}
+
+.btn-badge::after {
+    content: '🐾';
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    font-size: 0.8rem;
+    animation: bounce 2s infinite;
+}
+
+/* Responsividade - Mobile */
+@media (max-width: 992px) {
+    .header {
+        padding: 0.5rem 0;
+    }
+    
+    .logo {
+        font-size: 1.4rem;
+    }
+    
+    .logo i {
+        font-size: 1.8rem;
+    }
+    
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 85%;
+        max-width: 400px;
+        height: 100vh;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.95) 100%);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        padding: 2rem;
+        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
+        transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1000;
+    }
+    
+    .nav-menu.active {
+        right: 0;
+    }
+    
+    .nav-menu a {
+        font-size: 1.2rem;
+        padding: 1rem 0;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .nav-menu .btn-agendar {
+        width: 80%;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+    
+    .nav-menu::before {
+        content: '🐕 🐈';
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 2.5rem;
+        opacity: 0.1;
+        z-index: -1;
+    }
+    
+    /* Overlay quando menu está aberto */
+    .menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+    
+    .menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@media (max-width: 576px) {
+    .logo {
+        font-size: 1.2rem;
+        gap: 8px;
+    }
+    
+    .logo i {
+        font-size: 1.5rem;
+    }
+    
+    .logo-icon::before {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .nav-menu {
+        width: 100%;
+        max-width: 100%;
+        padding: 1.5rem;
+    }
+    
+    .nav-menu a {
+        font-size: 1.1rem;
+    }
+    
+    .nav-menu .btn-agendar {
+        width: 90%;
+        padding: 0.9rem 1.5rem;
+    }
+}
+
+/* Animações */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Estado ativo para scroll */
+.nav-menu a {
+    position: relative;
+}
+
+/* Estilo para o item ativo no menu baseado na seção visível */
+.nav-menu a.active-section {
+    color: var(--orange);
+    font-weight: 700;
+}
+
+.nav-menu a.active-section::after {
+    width: 100%;
+}
+
+/* Smooth transition for header on scroll */
+.header {
+    transition: all 0.3s ease;
+}
+
+/* Estilo para desktop com hover mais elaborado */
+@media (min-width: 993px) {
+    .nav-menu a {
+        overflow: hidden;
+    }
+    
+    .nav-menu a span {
+        position: relative;
+        display: inline-block;
+        transition: transform 0.3s ease;
+    }
+    
+    .nav-menu a:hover span {
+        transform: translateY(-2px);
+    }
+    
+    .nav-menu a::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, rgba(255, 107, 53, 0.1) 100%);
+        border-radius: 8px;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: -1;
+    }
+    
+    .nav-menu a:hover::before {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+}
