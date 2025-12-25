@@ -284,3 +284,195 @@ p {
 .mt-1 { margin-top: 1rem; }
 .mt-2 { margin-top: 2rem; }
 .mt-3 { margin-top: 3rem; }
+
+
+
+/* ===== ESTILOS PARA JAVASCRIPT ===== */
+
+/* Mensagens flutuantes */
+.mensagem-flutuante {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    z-index: 10000;
+    animation: slideInTop 0.5s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.mensagem-sucesso {
+    background: var(--green);
+}
+
+.mensagem-erro {
+    background: var(--pink);
+}
+
+.mensagem-info {
+    background: var(--blue);
+}
+
+@keyframes slideInTop {
+    from { transform: translateY(-100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideOutTop {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(-100%); opacity: 0; }
+}
+
+/* Botão voltar ao topo */
+.btn-topo {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--orange);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+    z-index: 999;
+    transition: all 0.3s ease;
+}
+
+.btn-topo:hover {
+    transform: translateY(-5px);
+    background: var(--orange-dark);
+    box-shadow: 0 8px 20px rgba(255, 107, 53, 0.4);
+}
+
+/* FAQ ativo */
+.faq-item.active .faq-resposta {
+    max-height: 500px;
+    padding-top: 15px;
+}
+
+.faq-item.active .faq-pergunta {
+    color: var(--orange);
+    font-weight: 600;
+}
+
+/* Formulário com estados */
+.form-group.focused {
+    border-color: var(--blue);
+}
+
+.form-group.error {
+    border-color: var(--pink);
+}
+
+.form-group.error input,
+.form-group.error select,
+.form-group.error textarea {
+    border-color: var(--pink) !important;
+}
+
+/* Botão de compra com feedback */
+.btn-success {
+    background: var(--green) !important;
+}
+
+/* Menu mobile ativo */
+.nav-menu.active {
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+/* Notificação flutuante */
+.notificacao-flutuante {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    z-index: 9999;
+    max-width: 350px;
+    animation: slideInRight 0.5s ease;
+}
+
+.notificacao-conteudo {
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.notificacao-conteudo i {
+    color: var(--orange);
+    font-size: 1.5rem;
+    margin-top: 3px;
+}
+
+.notificacao-fechar {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--dark-gray);
+    padding: 0 5px;
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOutRight {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(100%); opacity: 0; }
+}
+
+/* Header com scroll */
+.header.scrolled {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Efeitos de transição para produtos filtrados */
+.produto-card {
+    transition: all 0.3s ease;
+}
+
+/* Responsividade adicional */
+@media (max-width: 768px) {
+    .notificacao-flutuante {
+        right: 20px;
+        left: 20px;
+        max-width: none;
+    }
+    
+    .btn-topo {
+        bottom: 80px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+    
+    .whatsapp-float {
+        bottom: 20px;
+        right: 20px;
+        width: 55px;
+        height: 55px;
+    }
+}
