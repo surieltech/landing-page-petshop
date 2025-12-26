@@ -1,8 +1,7 @@
 // ============================================
-// CLÍNICA BICHO LEGAL - SCRIPT PRINCIPAL
+// CLÍNICA BICHO LEGAL - SCRIPT CORRIGIDO
 // ============================================
 
-// ===== CONFIGURAÇÕES INICIAIS =====
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Clínica Bicho Legal - Script inicializado');
 
@@ -13,55 +12,46 @@ document.addEventListener('DOMContentLoaded', function() {
     if (menuToggle && navMenu) {
         menuToggle.addEventListener('click', function() {
             navMenu.classList.toggle('active');
-            this.setAttribute('aria-expanded', navMenu.classList.contains('active'));
-            this.innerHTML = navMenu.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
+            const isActive = navMenu.classList.contains('active');
+            
+            // Troca o ícone
+            if (isActive) {
+                menuToggle.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
         });
 
         // Fechar menu ao clicar em um link
-        const navLinks = document.querySelectorAll('.nav-menu a');
-        navLinks.forEach(link => {
+        document.querySelectorAll('.nav-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
                 menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-                menuToggle.setAttribute('aria-expanded', 'false');
             });
-        });
-
-        // Fechar menu ao clicar fora
-        document.addEventListener('click', (e) => {
-            if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
-                navMenu.classList.remove('active');
-                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-                menuToggle.setAttribute('aria-expanded', 'false');
-            }
         });
     }
 
     // ===== FAQ - ACORDEÃO =====
-    const faqPerguntas = document.querySelectorAll('.faq-pergunta');
-    
-    faqPerguntas.forEach(pergunta => {
+    document.querySelectorAll('.faq-pergunta').forEach(pergunta => {
         pergunta.addEventListener('click', () => {
-            const item = pergunta.parentElement;
+            const faqItem = pergunta.parentElement;
             const resposta = pergunta.nextElementSibling;
             const icone = pergunta.querySelector('i');
             
-            // Fechar outros itens abertos
-            document.querySelectorAll('.faq-item').forEach(outroItem => {
-                if (outroItem !== item && outroItem.classList.contains('active')) {
-                    outroItem.classList.remove('active');
-                    outroItem.querySelector('.faq-resposta').style.maxHeight = null;
-                    outroItem.querySelector('.faq-pergunta i').classList.remove('fa-chevron-up');
-                    outroItem.querySelector('.faq-pergunta i').classList.add('fa-chevron-down');
+            // Fecha outros itens
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== faqItem && item.classList.contains('active')) {
+                    item.classList.remove('active');
+                    item.querySelector('.faq-resposta').style.maxHeight = null;
+                    item.querySelector('i').classList.remove('fa-chevron-up');
+                    item.querySelector('i').classList.add('fa-chevron-down');
                 }
             });
             
-            // Alternar item atual
-            item.classList.toggle('active');
+            // Alterna item atual
+            faqItem.classList.toggle('active');
             
-            if (item.classList.contains('active')) {
+            if (faqItem.classList.contains('active')) {
                 resposta.style.maxHeight = resposta.scrollHeight + 'px';
                 icone.classList.remove('fa-chevron-down');
                 icone.classList.add('fa-chevron-up');
@@ -74,20 +64,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ===== FILTRO DE PRODUTOS =====
-    const categoriaBtns = document.querySelectorAll('.categoria-btn');
-    const produtoCards = document.querySelectorAll('.produto-card');
-    
-    categoriaBtns.forEach(btn => {
+    document.querySelectorAll('.categoria-btn').forEach(btn => {
         btn.addEventListener('click', function() {
-            // Remover classe active de todos os botões
-            categoriaBtns.forEach(b => b.classList.remove('active'));
-            // Adicionar classe active ao botão clicado
+            // Remove classe active de todos os botões
+            document.querySelectorAll('.categoria-btn').forEach(b => {
+                b.classList.remove('active');
+            });
+            
+            // Adiciona classe active ao botão clicado
             this.classList.add('active');
             
             const categoria = this.getAttribute('data-categoria');
             
-            // Filtrar produtos
-            produtoCards.forEach(card => {
+            // Filtra produtos
+            document.querySelectorAll('.produto-card').forEach(card => {
                 const cardCategoria = card.getAttribute('data-categoria');
                 
                 if (categoria === 'todos' || categoria === cardCategoria) {
@@ -118,17 +108,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const amanha = new Date(hoje);
             amanha.setDate(hoje.getDate() + 1);
             dataInput.min = amanha.toISOString().split('T')[0];
-            
-            // Desabilitar sábados e domingos
-            dataInput.addEventListener('change', function() {
-                const dataSelecionada = new Date(this.value);
-                const diaSemana = dataSelecionada.getDay();
-                
-                if (diaSemana === 0 || diaSemana === 6) {
-                    alert('A clínica não funciona aos sábados e domingos para agendamentos. Por favor, selecione uma data de segunda a sexta.');
-                    this.value = '';
-                }
-            });
         }
         
         // Máscara para telefone
@@ -183,14 +162,14 @@ document.addEventListener('DOMContentLoaded', function() {
             botaoEnviar.disabled = true;
             
             setTimeout(() => {
-                // Em um caso real, aqui seria uma requisição AJAX
+                // Sucesso!
                 alert('Agendamento enviado com sucesso! Entraremos em contato em até 2 horas úteis para confirmar.');
                 formAgendamento.reset();
                 
                 botaoEnviar.innerHTML = textoOriginal;
                 botaoEnviar.disabled = false;
                 
-                // Rolar para o topo da seção
+                // Rolar para o topo
                 document.getElementById('agendamento').scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
@@ -200,9 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ===== BOTÕES DE COMPRA =====
-    const botoesComprar = document.querySelectorAll('.btn-comprar');
-    
-    botoesComprar.forEach(botao => {
+    document.querySelectorAll('.btn-comprar').forEach(botao => {
         botao.addEventListener('click', function() {
             const produtoCard = this.closest('.produto-card');
             const produtoNome = produtoCard.querySelector('h3').textContent;
@@ -213,28 +190,27 @@ document.addEventListener('DOMContentLoaded', function() {
             const numeroWhatsApp = '5592999999999';
             const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
             
-            // Abrir WhatsApp em nova aba
+            // Abrir WhatsApp
             window.open(urlWhatsApp, '_blank');
             
-            // Animação de feedback
+            // Feedback visual
+            const originalHTML = this.innerHTML;
             this.innerHTML = '<i class="fas fa-check"></i> Adicionado';
             this.classList.add('btn-success');
             
             setTimeout(() => {
-                this.innerHTML = '<i class="fas fa-shopping-cart"></i> Comprar';
+                this.innerHTML = originalHTML;
                 this.classList.remove('btn-success');
             }, 2000);
         });
     });
 
-    // ===== SCROLL SUAVE =====
-    const linksInternos = document.querySelectorAll('a[href^="#"]');
-    
-    linksInternos.forEach(link => {
+    // ===== SCROLL SUAVE PARA LINKS INTERNOS =====
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
         link.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
             
-            if (href === '#') return;
+            if (href === '#' || href === '#inicio') return;
             
             const target = document.querySelector(href);
             if (target) {
@@ -244,228 +220,78 @@ document.addEventListener('DOMContentLoaded', function() {
                     top: target.offsetTop - 80,
                     behavior: 'smooth'
                 });
-                
-                // Atualizar URL sem recarregar a página
-                history.pushState(null, null, href);
             }
         });
     });
 
     // ===== ANIMAÇÃO DE CONTAGEM PARA ESTATÍSTICAS =====
-    const statNumbers = document.querySelectorAll('.stat-number');
+    function animarEstatisticas() {
+        const statNumbers = document.querySelectorAll('.stat-number');
+        
+        statNumbers.forEach(stat => {
+            const valorFinal = stat.textContent;
+            
+            // Verificar se é um número válido
+            if (valorFinal.match(/^\d+\+?$/)) {
+                const numero = parseInt(valorFinal);
+                if (!isNaN(numero)) {
+                    let contador = 0;
+                    const incremento = numero / 50;
+                    const duracao = 1000;
+                    
+                    const timer = setInterval(() => {
+                        contador += incremento;
+                        if (contador >= numero) {
+                            contador = numero;
+                            clearInterval(timer);
+                        }
+                        stat.textContent = Math.floor(contador) + (valorFinal.includes('+') ? '+' : '');
+                    }, duracao / 50);
+                }
+            }
+        });
+    }
     
-    const observerOptions = {
-        threshold: 0.5,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
+    // Observar quando as estatísticas entram na tela
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                statNumbers.forEach(stat => {
-                    const valorFinal = stat.textContent;
-                    
-                    // Verificar se é um número válido para animar
-                    if (valorFinal.match(/^\d+\+?$/)) {
-                        const numeroLimpo = parseInt(valorFinal);
-                        if (!isNaN(numeroLimpo)) {
-                            animarContagem(stat, numeroLimpo);
-                        }
-                    }
-                });
-                observer.disconnect(); // Parar de observar após animar
+                animarEstatisticas();
+                observer.disconnect();
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.5 });
     
     const sobreStats = document.querySelector('.sobre-stats');
     if (sobreStats) {
         observer.observe(sobreStats);
     }
-    
-    function animarContagem(elemento, valorFinal) {
-        let contador = 0;
-        const incremento = valorFinal / 50; // Duração de 1 segundo (50 frames a 20ms)
-        const duracao = 1000; // 1 segundo
-        
-        const timer = setInterval(() => {
-            contador += incremento;
-            if (contador >= valorFinal) {
-                contador = valorFinal;
-                clearInterval(timer);
-            }
-            elemento.textContent = Math.floor(contador) + (elemento.textContent.includes('+') ? '+' : '');
-        }, duracao / 50);
-    }
 
-    // ===== HEADER COM SCROLL =====
+    // ===== HEADER COM EFEITO DE SCROLL =====
     const header = document.querySelector('.header');
     
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-            header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-            header.style.backdropFilter = 'blur(10px)';
-            header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-        } else {
-            header.style.backgroundColor = '';
-            header.style.backdropFilter = '';
-            header.style.boxShadow = '';
-        }
-    });
-
-    // ===== VALIDAÇÃO EM TEMPO REAL DOS FORMULÁRIOS =====
-    const inputsForm = document.querySelectorAll('input, textarea, select');
-    
-    inputsForm.forEach(input => {
-        // Evento de foco
-        input.addEventListener('focus', function() {
-            this.parentElement.classList.add('focused');
-        });
-        
-        // Evento de blur
-        input.addEventListener('blur', function() {
-            this.parentElement.classList.remove('focused');
-            
-            // Validação básica
-            if (this.hasAttribute('required') && !this.value.trim()) {
-                this.parentElement.classList.add('error');
+    if (header) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
             } else {
-                this.parentElement.classList.remove('error');
+                header.classList.remove('scrolled');
             }
-        });
-    });
-
-    // ===== ATUALIZAR ANO NO FOOTER =====
-    const anoAtual = new Date().getFullYear();
-    const elementosAno = document.querySelectorAll('.current-year');
-    
-    elementosAno.forEach(elemento => {
-        elemento.textContent = anoAtual;
-    });
-
-    // ===== MODAL DE CONFIRMAÇÃO PARA BOTÕES IMPORTANTES =====
-    const botoesImportantes = document.querySelectorAll('.btn-whatsapp, .btn-secondary[href*="tel"]');
-    
-    botoesImportantes.forEach(botao => {
-        botao.addEventListener('click', function(e) {
-            // Se já tem target _blank, não fazer nada
-            if (this.getAttribute('target') === '_blank') return;
-            
-            const href = this.getAttribute('href');
-            if (href && (href.includes('tel:') || href.includes('mailto:'))) {
-                // Permitir ação padrão para tel e mailto
-                return;
-            }
-            
-            // Para outros botões, podemos adicionar confirmação
-            if (!this.classList.contains('no-confirm')) {
-                if (!confirm('Você será redirecionado para fora do site. Deseja continuar?')) {
-                    e.preventDefault();
-                }
-            }
-        });
-    });
-
-    // ===== CARREGAMENTO DINÂMICO DE IMAGENS =====
-    const imagens = document.querySelectorAll('img[data-src]');
-    
-    if ('IntersectionObserver' in window) {
-        const imgObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.getAttribute('data-src');
-                    img.removeAttribute('data-src');
-                    imgObserver.unobserve(img);
-                }
-            });
-        });
-        
-        imagens.forEach(img => imgObserver.observe(img));
-    } else {
-        // Fallback para navegadores antigos
-        imagens.forEach(img => {
-            img.src = img.getAttribute('data-src');
         });
     }
 
-    // ===== NOTIFICAÇÃO DE VISITANTE =====
-    setTimeout(() => {
-        if (!localStorage.getItem('notificacaoMostrada')) {
-            const notificacao = document.createElement('div');
-            notificacao.className = 'notificacao-flutuante';
-            notificacao.innerHTML = `
-                <div class="notificacao-conteudo">
-                    <i class="fas fa-paw"></i>
-                    <div>
-                        <strong>Bem-vindo à Clínica Bicho Legal!</strong>
-                        <p>Atendimento 24h para emergências.</p>
-                    </div>
-                    <button class="notificacao-fechar">&times;</button>
-                </div>
-            `;
-            
-            document.body.appendChild(notificacao);
-            
-            // Estilos dinâmicos para a notificação
-            notificacao.style.cssText = `
-                position: fixed;
-                bottom: 100px;
-                right: 30px;
-                background: white;
-                border-radius: 10px;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-                z-index: 9999;
-                max-width: 350px;
-                animation: slideInRight 0.5s ease;
-            `;
-            
-            notificacao.querySelector('.notificacao-fechar').addEventListener('click', () => {
-                notificacao.style.animation = 'slideOutRight 0.5s ease';
-                setTimeout(() => {
-                    notificacao.remove();
-                }, 500);
-                localStorage.setItem('notificacaoMostrada', 'true');
-            });
-            
-            // Remover automaticamente após 10 segundos
-            setTimeout(() => {
-                if (notificacao.parentNode) {
-                    notificacao.style.animation = 'slideOutRight 0.5s ease';
-                    setTimeout(() => {
-                        notificacao.remove();
-                    }, 500);
-                }
-            }, 10000);
-            
-            // Adicionar keyframes CSS para animação
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes slideInRight {
-                    from { transform: translateX(100%); opacity: 0; }
-                    to { transform: translateX(0); opacity: 1; }
-                }
-                @keyframes slideOutRight {
-                    from { transform: translateX(0); opacity: 1; }
-                    to { transform: translateX(100%); opacity: 0; }
-                }
-            `;
-            document.head.appendChild(style);
-        }
-    }, 2000);
-
     // ===== BOTÃO VOLTAR AO TOPO =====
-    const criarBotaoTopo = () => {
+    function criarBotaoTopo() {
         const botaoTopo = document.createElement('button');
         botaoTopo.className = 'btn-topo';
         botaoTopo.innerHTML = '<i class="fas fa-chevron-up"></i>';
         botaoTopo.setAttribute('aria-label', 'Voltar ao topo');
         document.body.appendChild(botaoTopo);
         
-        // Estilos do botão
+        // Estilos básicos
         botaoTopo.style.cssText = `
             position: fixed;
-            bottom: 100px;
+            bottom: 30px;
             right: 30px;
             width: 50px;
             height: 50px;
@@ -487,10 +313,8 @@ document.addEventListener('DOMContentLoaded', function() {
         window.addEventListener('scroll', () => {
             if (window.scrollY > 500) {
                 botaoTopo.style.display = 'flex';
-                setTimeout(() => {
-                    botaoTopo.style.opacity = '1';
-                    botaoTopo.style.transform = 'translateY(0)';
-                }, 10);
+                botaoTopo.style.opacity = '1';
+                botaoTopo.style.transform = 'translateY(0)';
             } else {
                 botaoTopo.style.opacity = '0';
                 botaoTopo.style.transform = 'translateY(20px)';
@@ -507,54 +331,56 @@ document.addEventListener('DOMContentLoaded', function() {
                 behavior: 'smooth'
             });
         });
-        
-        // Efeito hover
-        botaoTopo.addEventListener('mouseenter', () => {
-            botaoTopo.style.transform = 'translateY(-5px)';
-            botaoTopo.style.boxShadow = '0 8px 20px rgba(255, 107, 53, 0.4)';
-        });
-        
-        botaoTopo.addEventListener('mouseleave', () => {
-            botaoTopo.style.transform = 'translateY(0)';
-            botaoTopo.style.boxShadow = '0 4px 15px rgba(255, 107, 53, 0.3)';
-        });
-    };
+    }
     
     criarBotaoTopo();
 
-    // ===== INICIALIZAÇÃO FINAL =====
-    console.log('Todos os scripts foram carregados com sucesso!');
+    // ===== VALIDAÇÃO EM TEMPO REAL =====
+    document.querySelectorAll('input, textarea, select').forEach(input => {
+        input.addEventListener('blur', function() {
+            if (this.hasAttribute('required') && !this.value.trim()) {
+                this.style.borderColor = '#EF476F';
+            } else {
+                this.style.borderColor = '';
+            }
+        });
+        
+        input.addEventListener('focus', function() {
+            this.style.borderColor = 'var(--blue)';
+        });
+    });
+
+    // ===== ATUALIZAR ANO NO FOOTER =====
+    const anoAtual = new Date().getFullYear();
+    document.querySelectorAll('.current-year').forEach(elemento => {
+        elemento.textContent = anoAtual;
+    });
+
+    // ===== DETECÇÃO DE DISPOSITIVO =====
+    function isMobile() {
+        return window.innerWidth <= 768;
+    }
+
+    // Ajustes para mobile
+    if (isMobile()) {
+        // Remover animações complexas em mobile
+        document.querySelectorAll('.servico-card').forEach(card => {
+            card.style.animation = 'none';
+            card.style.opacity = '1';
+        });
+    }
+
+    console.log('Script carregado com sucesso!');
 });
 
-// ===== FUNÇÕES GLOBAIS ÚTEIS =====
+// ===== FUNÇÕES ÚTEIS =====
 
-// Função para formatar números brasileiros
-function formatarNumeroBR(numero) {
-    return numero.toLocaleString('pt-BR', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-    });
-}
-
-// Função para validar email
-function validarEmail(email) {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
-}
-
-// Função para validar telefone brasileiro
-function validarTelefoneBR(telefone) {
-    const regex = /^\(?\d{2}\)?[\s-]?\d{4,5}-?\d{4}$/;
-    return regex.test(telefone);
-}
-
-// Função para mostrar mensagem de sucesso/erro
 function mostrarMensagem(tipo, mensagem, duracao = 3000) {
     const mensagemDiv = document.createElement('div');
     mensagemDiv.className = `mensagem-flutuante mensagem-${tipo}`;
     mensagemDiv.textContent = mensagem;
     
-    // Estilos
+    // Estilos básicos
     mensagemDiv.style.cssText = `
         position: fixed;
         top: 20px;
@@ -565,15 +391,12 @@ function mostrarMensagem(tipo, mensagem, duracao = 3000) {
         font-weight: 500;
         z-index: 10000;
         animation: slideInTop 0.5s ease;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     `;
     
     if (tipo === 'sucesso') {
         mensagemDiv.style.background = '#06D6A0';
     } else if (tipo === 'erro') {
         mensagemDiv.style.background = '#EF476F';
-    } else if (tipo === 'info') {
-        mensagemDiv.style.background = '#118AB2';
     }
     
     document.body.appendChild(mensagemDiv);
@@ -585,44 +408,39 @@ function mostrarMensagem(tipo, mensagem, duracao = 3000) {
             mensagemDiv.remove();
         }, 500);
     }, duracao);
-    
-    // Adicionar keyframes se necessário
-    if (!document.querySelector('#mensagem-animations')) {
-        const style = document.createElement('style');
-        style.id = 'mensagem-animations';
-        style.textContent = `
-            @keyframes slideInTop {
-                from { transform: translateY(-100%); opacity: 0; }
-                to { transform: translateY(0); opacity: 1; }
-            }
-            @keyframes slideOutTop {
-                from { transform: translateY(0); opacity: 1; }
-                to { transform: translateY(-100%); opacity: 0; }
-            }
-        `;
-        document.head.appendChild(style);
+}
+
+// Adicionar CSS para as animações
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideInTop {
+        from { transform: translateY(-100%); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
     }
-}
-
-// ===== DETECÇÃO DE DISPOSITIVO =====
-function isMobile() {
-    return window.innerWidth <= 768;
-}
-
-function isTablet() {
-    return window.innerWidth > 768 && window.innerWidth <= 992;
-}
-
-function isDesktop() {
-    return window.innerWidth > 992;
-}
-
-// ===== OBSERVADOR DE MUDANÇA DE TAMANHO DE TELA =====
-let timeoutResize;
-window.addEventListener('resize', () => {
-    clearTimeout(timeoutResize);
-    timeoutResize = setTimeout(() => {
-        // Ações quando a tela é redimensionada
-        console.log(`Tamanho da tela: ${window.innerWidth}x${window.innerHeight}`);
-    }, 250);
-});
+    @keyframes slideOutTop {
+        from { transform: translateY(0); opacity: 1; }
+        to { transform: translateY(-100%); opacity: 0; }
+    }
+    
+    .btn-success {
+        background-color: #06D6A0 !important;
+    }
+    
+    /* Estilo para FAQ ativo */
+    .faq-item.active .faq-resposta {
+        max-height: 500px !important;
+    }
+    
+    /* Botão voltar ao topo visível */
+    .btn-topo {
+        opacity: 0;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    
+    /* Header com scroll */
+    .header.scrolled {
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+`;
+document.head.appendChild(style);
