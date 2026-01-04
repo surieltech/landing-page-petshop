@@ -1,7 +1,59 @@
-// ============================================
-// CLÍNICA BICHO LEGAL - SCRIPT CORRIGIDO
-// ============================================
+// ===== FILTRO DE PRODUTOS - CORRIGIDO =====
+function inicializarFiltroProdutos() {
+    const categoriaBtns = document.querySelectorAll('.categoria-btn');
+    const produtoCards = document.querySelectorAll('.produto-card');
+    
+    // Função para filtrar produtos
+    function filtrarProdutos(categoria) {
+        produtoCards.forEach(card => {
+            const cardCategoria = card.getAttribute('data-categoria');
+            
+            // Remove todas as classes ativas dos cards
+            card.classList.remove('active');
+            
+            if (categoria === 'todos' || categoria === cardCategoria) {
+                card.style.display = 'block';
+                // Adiciona pequeno delay para animação
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 50);
+            } else {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.display = 'none';
+                }, 300);
+            }
+        });
+    }
+    
+    // Configurar evento de clique nos botões
+    categoriaBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Remove classe active de todos os botões
+            categoriaBtns.forEach(b => b.classList.remove('active'));
+            
+            // Adiciona classe active ao botão clicado
+            this.classList.add('active');
+            
+            const categoria = this.getAttribute('data-categoria');
+            filtrarProdutos(categoria);
+        });
+    });
+    
+    // Filtrar automaticamente na inicialização baseado no botão ativo
+    const btnAtivo = document.querySelector('.categoria-btn.active');
+    if (btnAtivo) {
+        const categoriaAtiva = btnAtivo.getAttribute('data-categoria');
+        filtrarProdutos(categoriaAtiva);
+    } else {
+        // Se nenhum botão estiver ativo, mostrar todos os produtos
+        filtrarProdutos('todos');
+    }
+}
 
+// ===== ATUALIZAR O EVENT LISTENER =====
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Clínica Bicho Legal - Script inicializado');
 
@@ -64,38 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ===== FILTRO DE PRODUTOS =====
-    document.querySelectorAll('.categoria-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            // Remove classe active de todos os botões
-            document.querySelectorAll('.categoria-btn').forEach(b => {
-                b.classList.remove('active');
-            });
-            
-            // Adiciona classe active ao botão clicado
-            this.classList.add('active');
-            
-            const categoria = this.getAttribute('data-categoria');
-            
-            // Filtra produtos
-            document.querySelectorAll('.produto-card').forEach(card => {
-                const cardCategoria = card.getAttribute('data-categoria');
-                
-                if (categoria === 'todos' || categoria === cardCategoria) {
-                    card.style.display = 'block';
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, 100);
-                } else {
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(20px)';
-                    setTimeout(() => {
-                        card.style.display = 'none';
-                    }, 300);
-                }
-            });
-        });
-    });
+    inicializarFiltroProdutos();
 
     // ===== FORMULÁRIO DE AGENDAMENTO =====
     const formAgendamento = document.getElementById('form-agendamento');
@@ -372,75 +393,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
     console.log('Script carregado com sucesso!');
 });
-
-// ===== FUNÇÕES ÚTEIS =====
-
-function mostrarMensagem(tipo, mensagem, duracao = 3000) {
-    const mensagemDiv = document.createElement('div');
-    mensagemDiv.className = `mensagem-flutuante mensagem-${tipo}`;
-    mensagemDiv.textContent = mensagem;
-    
-    // Estilos básicos
-    mensagemDiv.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        padding: 15px 25px;
-        border-radius: 8px;
-        color: white;
-        font-weight: 500;
-        z-index: 10000;
-        animation: slideInTop 0.5s ease;
-    `;
-    
-    if (tipo === 'sucesso') {
-        mensagemDiv.style.background = '#06D6A0';
-    } else if (tipo === 'erro') {
-        mensagemDiv.style.background = '#EF476F';
-    }
-    
-    document.body.appendChild(mensagemDiv);
-    
-    // Remover após duração
-    setTimeout(() => {
-        mensagemDiv.style.animation = 'slideOutTop 0.5s ease';
-        setTimeout(() => {
-            mensagemDiv.remove();
-        }, 500);
-    }, duracao);
-}
-
-// Adicionar CSS para as animações
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes slideInTop {
-        from { transform: translateY(-100%); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
-    }
-    @keyframes slideOutTop {
-        from { transform: translateY(0); opacity: 1; }
-        to { transform: translateY(-100%); opacity: 0; }
-    }
-    
-    .btn-success {
-        background-color: #06D6A0 !important;
-    }
-    
-    /* Estilo para FAQ ativo */
-    .faq-item.active .faq-resposta {
-        max-height: 500px !important;
-    }
-    
-    /* Botão voltar ao topo visível */
-    .btn-topo {
-        opacity: 0;
-        transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-    
-    /* Header com scroll */
-    .header.scrolled {
-        background: rgba(255, 255, 255, 0.95);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    }
-`;
-document.head.appendChild(style);
